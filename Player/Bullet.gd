@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var velocity = Vector2.ZERO
 var speed = 500.0
-var damage = 1
+var damage = 10
 
 onready var Explosion = load("res://Effects/Explosion.tscn")
 var Effects = null 
@@ -15,7 +15,6 @@ func _physics_process(_delta):
 	position.x = wrapf(position.x, 0, 1024)
 	position.y = wrapf(position.y, 0, 600)
 	
-
 func _on_Area2D_body_entered(body):
 	if body.has_method("damage"):
 		body.damage(damage)

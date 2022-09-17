@@ -35,11 +35,13 @@ func damage(d):
 	queue_free()
 	
 func _on_Area2D_body_entered(body):
-		if body.name != "Enemy" and body.name != "EnemyBullet":
-				body.damage(100)
-				damage(100)
-
-
+		print(body)
+		if body.name == "Player":
+			body.damage(100)
+			damage(100)
+		elif "Bullet" in body.name and not "EnemyBullet" in body.name:
+			damage(100)
+		
 
 func _on_Timer_timeout():
 	var Player = get_node_or_null("/root/Game/Player_Container/Player")
